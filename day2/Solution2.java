@@ -5,27 +5,24 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Solution2 {
-    public static void main(String[] args) {
-        int validPassword = readAndSolve();
-        System.out.println(validPassword);
+    public static void main(String[] args) throws FileNotFoundException {
+        int ans = solve();
+        System.out.println(ans);
     }
 
-    private static int readAndSolve() {
+    private static int solve() throws FileNotFoundException {
         int validPassword = 0;
-        try {
-            File input = new File("day2/input.txt");
-            Scanner s = new Scanner(input);
-            while (s.hasNextLine()) {
-                String line = s.nextLine();
-                if (valid(line)) {
-                    validPassword++;
-                }
+
+        File input = new File("day2/input.txt");
+        Scanner s = new Scanner(input);
+        while (s.hasNextLine()) {
+            String line = s.nextLine();
+            if (valid(line)) {
+                validPassword++;
             }
-            s.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
         }
+        s.close();
+
         return validPassword;
     }
 
@@ -37,11 +34,11 @@ public class Solution2 {
         String target = policy.split("-")[1].split(" ")[1];
 
         boolean pos1 = false, pos2 = false;
-        if (low-1 < password.length()) {
-            pos1 = target.equals(Character.toString(password.charAt(low-1)));
+        if (low - 1 < password.length()) {
+            pos1 = target.equals(Character.toString(password.charAt(low - 1)));
         }
-        if (high-11 < password.length()) {
-            pos2 = target.equals(Character.toString(password.charAt(high-1)));
+        if (high - 1 < password.length()) {
+            pos2 = target.equals(Character.toString(password.charAt(high - 1)));
         }
 
         return pos1 ^ pos2;
