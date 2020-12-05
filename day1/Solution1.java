@@ -10,7 +10,7 @@ import java.util.Scanner;
 class Solution1 {
     public static void main(String[] args) throws FileNotFoundException {
         long ans = solve();
-        System.out.println(ans);
+        System.out.println(ans, ':)');
     }
 
     private static int solve() throws FileNotFoundException {
